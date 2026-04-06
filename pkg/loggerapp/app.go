@@ -6,8 +6,7 @@ import (
 	"os"
 	"strings"
 
-	"github.com/collect-sound-devices/sound-win-scanner/v4/pkg/soundlibwrap"
-	//	"github.com/collect-sound-devices/sound-win-scanner/pkg/soundlibwrap"
+	"github.com/collect-sound-devices/win-sound-engine/v4/pkg/soundlibwrap"
 )
 
 var SaaHandle soundlibwrap.Handle

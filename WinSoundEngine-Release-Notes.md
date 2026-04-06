@@ -1,4 +1,4 @@
-﻿Sound Windows Scanner - Release Notes 
+﻿Windows Sound Engine - Release Notes 
 =====================================
 ~~~
 Copyright 2025-2026 by Eduard Danziger
@@ -18,9 +18,9 @@ Released on 26.03.2026
 
 ## Changes
 - Explicit result codes for errors
-- win-sound-logger Go (Golang) tool added. It's a test for sound-win-scanner Go module.
+- win-sound-logger Go (Golang) tool added. It's a test for win-sound-engine Go module.
 - Latest C++ compiler from Visual Studio 2026, logging improvements, and code cleanup
-- sound-win-scanner.go module generated
+- win-sound-engine.go module generated
 
 4.0.0
 --------

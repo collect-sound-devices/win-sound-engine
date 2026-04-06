@@ -6,8 +6,8 @@ import (
 	"os"
 	"os/signal"
 	"syscall"
-	//	"github.com/collect-sound-devices/sound-win-scanner/pkg/loggerapp"
-	"github.com/collect-sound-devices/sound-win-scanner/v4/pkg/loggerapp"
+
+	"github.com/collect-sound-devices/win-sound-engine/v4/pkg/loggerapp"
 )
 
 var (
