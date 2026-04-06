@@ -1,6 +1,6 @@
-# Sound Windows Scanner (SoundWinScanner)
+# Windows Sound Engine (WinSoundEngine)
 
-SoundWinScanner is a sound device scanner engine that contains tools
+WinSoundEngine is a sound device scanner engine that contains tools
 to detects and outputs plug-and-play audio endpoint devices under Windows.
 It handles audio notifications and device changes.
 
@@ -8,7 +8,7 @@ It contains:
 - C/C++ sound agent core library SoundAgentLib
 - SoundAgentApi DLL, that provides a simple ANSI C API to the library for external clients
 - SoundDefaultUI, a lightweight C# UI monitor with SoundAgentApi as backend
-- **sound-win-scanner**, a Go-module that leverages SoundAgentApi for Go-clients
+- **win-sound-engine**, a Go-module that leverages SoundAgentApi for Go-clients
 - win-sound-logger, a simple Go CLI tool to log audio device information to the console, using SoundAgentApi as backend
 
 ## Architecture
@@ -24,7 +24,7 @@ classDef invisibleNode fill:transparent, stroke:transparent;
 
 coreAudioApi["Core Audio<br>(Windows API)"]
 
-subgraph scannerBackend["<b>sound-win-scanner (Go module)</b>"]
+subgraph scannerBackend["<b>win-sound-engine (Go module)</b>"]
     invisible3["<br><br><br><br><br>"]
     class invisible3 invisibleNode
     goCgoWrapper["SoundLibWrap<br>(Go package)"]
@@ -70,7 +70,7 @@ rabbitMqRestForwarder -->|POST/PUT requests| deviceRepositoryApi
 
 ## Go Modules Generated
 
-- **sound-win-scanner**: Go module that wraps the C++ core logic and provides a Go API for [WinSoundScanner](https://github.com/collect-sound-devices/win-sound-scanner-go)
+- **win-sound-engine**: Go module that wraps the C++ core logic and provides a Go API for [WinSoundScanner](https://github.com/collect-sound-devices/win-sound-scanner-go)
 
 ## Executables Generated
 
@@ -83,7 +83,7 @@ rabbitMqRestForwarder -->|POST/PUT requests| deviceRepositoryApi
 
 ### `SoundDefaultUI.exe`
 - Download and unzip the latest rollout of **SoundDefaultUI-x.x.x**. from the latest repository
-release's assets, [Release](https://github.com/collect-sound-devices/sound-win-scanner/releases/latest)
+release's assets, [Release](https://github.com/collect-sound-devices/win-sound-engine/releases/latest)
 
 - Install certificates and unblock the `SoundDefaultUI.exe` per PowerShell (start as Administrator):
     ```powershell
@@ -93,12 +93,12 @@ release's assets, [Release](https://github.com/collect-sound-devices/sound-win-s
 ### 'SoundAgentCli.exe'
 
 - Download and unzip the latest rollout of **SoundAgentCli-x.x.x**. from the latest repository
-  release's assets, [Release](https://github.com/collect-sound-devices/sound-win-scanner/releases/latest)
+  release's assets, [Release](https://github.com/collect-sound-devices/win-sound-engine/releases/latest)
 
 ### 'win-sound-logger'
 
 - Download and unzip the latest rollout of **win-sound-logger-x.x.x**. from the latest repository
-  release's assets, [Release](https://github.com/collect-sound-devices/sound-win-scanner/releases/latest)
+  release's assets, [Release](https://github.com/collect-sound-devices/win-sound-engine/releases/latest)
 
 
 ## Developer Environment, How to Build
@@ -115,7 +115,7 @@ release's assets, [Release](https://github.com/collect-sound-devices/sound-win-s
 ### Building
 
 ```powershell
-&"c:\Program Files\Microsoft Visual Studio\2022\Community\Msbuild\Current\Bin\MSBuild.exe" SoundWinScanner.sln /target:Rebuild -restore /p:Configuration=Release /p:RestorePackagesConfig=true
+&"c:\Program Files\Microsoft Visual Studio\2022\Community\Msbuild\Current\Bin\MSBuild.exe" WinSoundEngine.sln /target:Rebuild -restore /p:Configuration=Release /p:RestorePackagesConfig=true
 
 .\scripts\buildGo.ps1 
 ```

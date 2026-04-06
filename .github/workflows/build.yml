@@ -116,7 +116,7 @@ jobs:
         shell: powershell
         run: |
           $app_name = "${{ env.GO_APP_NAME }}"
-          $artifactName = "$app_name-$Env:APP_VERSION.zip"
+          $artifactName = "$app_name-go-$Env:APP_VERSION.zip"
           Write-Host "Creating artifact $artifactName from x64/Release ..."
           $binPath = Join-Path $PWD "x64"
           $binPath = Join-Path $binPath "Release"
@@ -160,6 +160,6 @@ jobs:
           if gh release view "$VERS" > /dev/null 2>&1; then
             echo "Release $VERS already exists; updating assets"
           else
-            gh release create "$VERS" --title "SoundWinScanner $VERS" --notes "Release $VERS"
+            gh release create "$VERS" --title "WinSoundEngine $VERS" --notes "Release $VERS"
           fi
           gh release upload "$VERS" build/*.* --clobber
