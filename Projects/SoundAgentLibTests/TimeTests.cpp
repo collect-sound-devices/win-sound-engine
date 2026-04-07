@@ -6,7 +6,7 @@
 
 #include "public/generate-uuid.h"
 
-#include "ApiClient/common/TimeUtil.h"
+#include "internal/TimeUtil.h"
 
 using namespace std::literals;
 using namespace std::chrono;
@@ -38,7 +38,7 @@ namespace ed::audio
             const auto absMinutes = offsetMinutes < 0 ? -offsetMinutes : offsetMinutes;
             const auto hh = absMinutes / 60;
             const auto mm = absMinutes % 60;
-            const auto tz = fmt::format("{}{:02}{:02}", sign, hh, mm);
+            const auto tz = fmt::format("{}{:02}:{:02}", sign, hh, mm);
 
             fromFmtDirectly = fmt::format(fmt::runtime("{:%FT%T}{}"), localTime, tz);
             Assert::AreEqual(fromFmtDirectly, fromTimeUtil);
@@ -70,7 +70,7 @@ namespace ed::audio
             const auto absMinutes = offsetMinutes < 0 ? -offsetMinutes : offsetMinutes;
             const auto hh = absMinutes / 60;
             const auto mm = absMinutes % 60;
-            const auto zoneAsString = fmt::format("{}{:02}{:02}", sign, hh, mm);
+            const auto zoneAsString = fmt::format("{}{:02}:{:02}", sign, hh, mm);
             const auto expectedWithTimeZone = "2025-05-29 12:34:56.223709"s + zoneAsString;
             Assert::AreEqual(expectedWithTimeZone, fromTimeUtil);
         }
@@ -95,6 +95,7 @@ namespace ed::audio
             fromTimeUtil = TimePointToStringAsUtc(utcTimePoint, false, true);
             const auto fromFmtDirectly = fmt::format("{:%F %TZ}", utcTimePoint);
 
+            // ReSharper disable once CppVariableCanBeMadeConstexpr
             const auto expectedWithTimeZone = "2025-05-29 10:34:56.223709Z"s;
             Assert::AreEqual(expectedWithTimeZone, fromTimeUtil);
             Assert::AreEqual(expectedWithTimeZone, fromFmtDirectly);
@@ -121,6 +122,7 @@ namespace ed::audio
             fromTimeUtil = TimePointToStringAsUtc(utcTimePoint, false, true);
             const auto fromFmtDirectly = fmt::format("{:%F %TZ}", utcTimePoint);
 
+            // ReSharper disable once CppVariableCanBeMadeConstexpr
             const auto expectedWithTimeZone = "2025-05-29 10:34:56.500000Z"s;
             Assert::AreEqual(expectedWithTimeZone, fromTimeUtil);
             Assert::AreEqual(expectedWithTimeZone, fromFmtDirectly);

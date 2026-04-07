@@ -56,17 +56,17 @@
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="ApiClient\common\SpdLogger.h" />
-    <ClInclude Include="ApiClient\common\SpdLogger\AppPath.h" />
-    <ClInclude Include="ApiClient\common\SpdLogger\LogBuffer.h" />
-    <ClInclude Include="ApiClient\common\SpdLogger\Logger.h" />
-    <ClInclude Include="ApiClient\common\ClassDefHelper.h" />
+    <ClInclude Include="internal\SpdLogger.h" />
+    <ClInclude Include="internal\SpdLogger\AppPath.h" />
+    <ClInclude Include="internal\SpdLogger\LogBuffer.h" />
+    <ClInclude Include="internal\SpdLogger\Logger.h" />
+    <ClInclude Include="internal\ClassDefHelper.h" />
     <ClInclude Include="OsInfo.h" />
     <ClInclude Include="public\CoInitRaiiHelper.h" />
     <ClInclude Include="public\generate-uuid.h" />
     <ClInclude Include="public\SoundAgentInterface.h" />
-    <ClInclude Include="ApiClient\common\StringUtils.h" />
-    <ClInclude Include="ApiClient\common\TimeUtil.h" />
+    <ClInclude Include="internal\StringUtils.h" />
+    <ClInclude Include="internal\TimeUtil.h" />
     <ClInclude Include="SoundDevice.h" />
     <ClInclude Include="SoundDeviceCollection.h" />
     <ClInclude Include="MultipleNotificationClient.h" />
@@ -78,7 +78,7 @@
     <ClCompile Include="OsInfo.cpp" />
     <ClCompile Include="SoundDevice.cpp" />
     <ClCompile Include="SoundDeviceCollection.cpp" />
-    <ClCompile Include="ApiClient\common\StringUtils.cpp" />
+    <ClCompile Include="internal\StringUtils.cpp" />
   </ItemGroup>
   <Import Project="$(MSBuildThisFileDirectory)..\..\msbuildLibCpp\Ed.Cpp.targets" />
   <Target Name="RunUnitTests" />

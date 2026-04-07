@@ -25,7 +25,7 @@ public struct SaaDescription
 [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Ansi)]
 public struct SaaLogMessage
 {
-    [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 32)]
+    [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 34)]
     public string Timestamp;
 
     [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 12)]
@@ -61,7 +61,7 @@ public delegate void SaaDefaultChangedDelegate(
 );
 
 [UnmanagedFunctionPointer(CallingConvention.StdCall)]
-public delegate void SaaGotLogMessageDelegate(SaaLogMessage message);
+public delegate void SaaGotLogMessageDelegate(System.IntPtr message);
 
 
 internal static class SoundAgentApi

@@ -58,7 +58,7 @@
 
     /** Log message forwarded from internal logger. */
     typedef struct {
-        CHAR Timestamp[32]; /**< Timestamp string. */
+        CHAR Timestamp[34]; /**< Timestamp string. */
         CHAR Level[12];    /**< Severity: trace, debug, info, warn, warning, error, critical. */
         CHAR Content[256]; /**< Message text. */
     } SaaLogMessage;
@@ -80,7 +80,7 @@
 
     /** Asynchronous log message callback. */
     typedef void(__stdcall* TSaaGotLogMessageCallback)(
-        _In_ SaaLogMessage message
+        _In_ SaaLogMessage* message
         );
 
     /**

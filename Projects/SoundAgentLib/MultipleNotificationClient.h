@@ -5,7 +5,7 @@
 #include <endpointvolume.h>
 #include <mmdeviceapi.h>
 
-#include <ApiClient/common/ClassDefHelper.h>
+#include <internal/ClassDefHelper.h>
 
 #include "Utilities.h"
 

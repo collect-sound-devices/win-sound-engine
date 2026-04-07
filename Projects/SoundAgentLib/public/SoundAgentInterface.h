@@ -1,7 +1,7 @@
 ﻿// ReSharper disable CppClangTidyModernizeUseNodiscard
 #pragma once
 
-#include <ApiClient/common/ClassDefHelper.h>
+#include <internal/ClassDefHelper.h>
 
 #include <memory>
 #include <string>

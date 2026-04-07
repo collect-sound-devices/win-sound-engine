@@ -6,7 +6,7 @@
 
 #include <CppUnitTest.h>
 
-#include "ApiClient/common/SpdLogger.h"
+#include "internal/SpdLogger.h"
 
 #include "SoundDeviceCollection.h"
 

@@ -15,7 +15,7 @@ package soundlibwrap
 // Forward declarations of Go-exported callbacks (implemented in this package)
 void __stdcall cgoSaaDefaultRenderChanged(SaaEventType event);
 void __stdcall cgoSaaDefaultCaptureChanged(SaaEventType event);
-void __stdcall cgoSaaGotLogMessage(SaaLogMessage message);
+void __stdcall cgoSaaGotLogMessage(SaaLogMessage* message);
 */
 import "C"
 
