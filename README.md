@@ -24,7 +24,7 @@ classDef invisibleNode fill:transparent, stroke:transparent;
 
 coreAudioApi["Core Audio<br>(Windows API)"]
 
-subgraph scannerBackend["<b>win-sound-engine (Go module)</b>"]
+subgraph scannerBackend["<b>win-sound-engine (C++ / Go module)</b>"]
     invisible3["<br><br><br><br><br>"]
     class invisible3 invisibleNode
     goCgoWrapper["SoundLibWrap<br>(Go package)"]
