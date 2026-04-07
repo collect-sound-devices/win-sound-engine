@@ -2,22 +2,25 @@ package loggerapp
 
 import (
 	"context"
+	"fmt"
 	"log"
 	"os"
 	"strings"
+	"time"
 
 	"github.com/collect-sound-devices/win-sound-engine/v4/pkg/soundlibwrap"
 )
 
 var SaaHandle soundlibwrap.Handle
 
-var logger = log.New(os.Stdout, "", log.Ldate|log.Ltime|log.Lmicroseconds)
+var logger = log.New(os.Stdout, "", 0)
 
 func logf(level, format string, v ...interface{}) {
 	if level == "" {
 		level = "info"
 	}
-	logger.Printf("["+level+"] "+format, v...)
+	ts := time.Now().UTC().Format("2006/01/02 15:04:05.000000-07:00")
+	logger.Print(ts + " [" + level + "] " + fmt.Sprintf(format, v...))
 }
 
 func logInfo(format string, v ...interface{}) {

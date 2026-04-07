@@ -10,6 +10,9 @@ $version$
 Released on $date$
 ~~~
 
+## Changes
+- Repository renamed to win-sound-engine. Submodule removed
+
 4.0.5
 --------
 ~~~
