@@ -34,7 +34,7 @@ func cgoSaaDefaultCaptureChanged(event C.SaaEventType) {
 }
 
 //export cgoSaaGotLogMessage
-func cgoSaaGotLogMessage(msg C.SaaLogMessage) {
+func cgoSaaGotLogMessage(msg *C.SaaLogMessage) {
 	timestamp := C.GoString(&msg.Timestamp[0])
 	level := C.GoString(&msg.Level[0])
 	content := C.GoString(&msg.Content[0])

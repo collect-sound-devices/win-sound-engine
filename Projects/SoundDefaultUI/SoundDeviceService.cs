@@ -5,6 +5,7 @@ using System.Windows.Threading;
 using System.Xml.Linq;
 using static SoundDefaultUI.SoundAgentApi;
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
 using LogLevel = NLog.LogLevel;
 
 namespace SoundDefaultUI;
@@ -38,13 +39,15 @@ public sealed class SoundDeviceService : IDisposable
 #pragma warning restore CA1806
     }
 
-    private static void OnLogMessage(SaaLogMessage logMessage)
+    private static void OnLogMessage(IntPtr logMessage)
     {
-        var nulIndex = Array.IndexOf(logMessage.Content, (byte)0);
-        var length = (nulIndex >= 0) ? nulIndex : logMessage.Content.Length;
-        var messageText = Encoding.UTF8.GetString(logMessage.Content, 0, length);
+        var message = Marshal.PtrToStructure<SaaLogMessage>(logMessage);
 
-        if (SpdLogToNlog.TryGetValue(logMessage.Level, out var nlogLevel) && nlogLevel != LogLevel.Off)
+        var nulIndex = Array.IndexOf(message.Content, (byte)0);
+        var length = (nulIndex >= 0) ? nulIndex : message.Content.Length;
+        var messageText = Encoding.UTF8.GetString(message.Content, 0, length);
+
+        if (SpdLogToNlog.TryGetValue(message.Level, out var nlogLevel) && nlogLevel != LogLevel.Off)
         {
             Logger.Log(nlogLevel, messageText);
         }

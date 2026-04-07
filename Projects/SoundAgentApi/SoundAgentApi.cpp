@@ -97,7 +97,7 @@ namespace  {
         strncpy_s(out.Timestamp, _countof(out.Timestamp), timestamp.c_str(), _TRUNCATE);
         strncpy_s(out.Level, _countof(out.Level), level.c_str(), _TRUNCATE);
         strncpy_s(out.Content, _countof(out.Content), message.c_str(), _TRUNCATE);
-        got_log_message_callback(out);
+        got_log_message_callback(&out);
     }
 
     void SetUpLog

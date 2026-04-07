@@ -61,7 +61,7 @@ public delegate void SaaDefaultChangedDelegate(
 );
 
 [UnmanagedFunctionPointer(CallingConvention.StdCall)]
-public delegate void SaaGotLogMessageDelegate(SaaLogMessage message);
+public delegate void SaaGotLogMessageDelegate(System.IntPtr message);
 
 
 internal static class SoundAgentApi

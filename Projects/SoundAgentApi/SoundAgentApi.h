@@ -80,7 +80,7 @@
 
     /** Asynchronous log message callback. */
     typedef void(__stdcall* TSaaGotLogMessageCallback)(
-        _In_ SaaLogMessage message
+        _In_ SaaLogMessage* message
         );
 
     /**
