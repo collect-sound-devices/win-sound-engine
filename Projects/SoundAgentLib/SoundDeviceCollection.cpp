@@ -11,7 +11,7 @@ extern "C" const CLSID CLSID_StdGlobalInterfaceTable;
 #include "SoundDevice.h"
 #include "Utilities.h"
 
-#include "ApiClient/common/StringUtils.h"
+#include "internal/StringUtils.h"
 
 #include <cstddef>
 #include <mmdeviceapi.h>

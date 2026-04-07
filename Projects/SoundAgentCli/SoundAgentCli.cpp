@@ -1,6 +1,6 @@
 #include "stdafx.h"
 
-#include "ApiClient/common/TimeUtil.h"
+#include "internal/TimeUtil.h"
 
 #include "OsInfo.h"
 #include "public/CoInitRaiiHelper.h"
@@ -11,7 +11,7 @@
 #include <tchar.h>
 #include <magic_enum/magic_enum.hpp>
 
-#include "ApiClient/common/SpdLogger.h"
+#include "internal/SpdLogger.h"
 
 
 class ServiceObserver final : public SoundDeviceObserverInterface {

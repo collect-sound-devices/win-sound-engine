@@ -33,7 +33,7 @@
     <ClInclude Include="Utilities.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="ApiClient\common\ClassDefHelper.h">
+    <ClInclude Include="internal\ClassDefHelper.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="public\CoInitRaiiHelper.h">
@@ -45,22 +45,22 @@
     <ClInclude Include="public\SoundAgentInterface.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="ApiClient\common\StringUtils.h">
+    <ClInclude Include="internal\StringUtils.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="ApiClient\common\TimeUtil.h">
+    <ClInclude Include="internal\TimeUtil.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="ApiClient\common\SpdLogger\AppPath.h">
+    <ClInclude Include="internal\SpdLogger\AppPath.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="ApiClient\common\SpdLogger\LogBuffer.h">
+    <ClInclude Include="internal\SpdLogger\LogBuffer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="ApiClient\common\SpdLogger\Logger.h">
+    <ClInclude Include="internal\SpdLogger\Logger.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="ApiClient\common\SpdLogger.h">
+    <ClInclude Include="internal\SpdLogger.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="OsInfo.h">
@@ -68,7 +68,7 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="ApiClient\common\StringUtils.cpp">
+    <ClCompile Include="internal\StringUtils.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="SoundDeviceCollection.cpp">

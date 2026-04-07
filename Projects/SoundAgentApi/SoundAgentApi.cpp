@@ -4,7 +4,7 @@
 
 #include "public/SoundAgentInterface.h"
 #include "OsInfo.h"
-#include "ApiClient/common/ClassDefHelper.h"
+#include "internal/ClassDefHelper.h"
 
 #include "VersionInformation.h"
 
@@ -12,7 +12,7 @@
 #include <crtdbg.h>
 #include <intsafe.h>
 
-#include "ApiClient/common/SpdLogger/Logger.h"
+#include "internal/SpdLogger/Logger.h"
 
 namespace {
     struct HandleContext {

@@ -1,6 +1,6 @@
 #include "stdafx.h"
 
-#include "ApiClient/common/SpdLogger.h"
+#include "internal/SpdLogger.h"
 
 #include <CppUnitTest.h>
 
