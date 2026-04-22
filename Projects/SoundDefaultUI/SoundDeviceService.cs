@@ -1,6 +1,9 @@
 ﻿using NLog;
 using System.Reflection;
 using System.Text;
+#pragma warning disable IDE0005
+using System.Threading;
+#pragma warning restore IDE0005
 using static SoundDefaultUI.SoundAgentApi;
 using System.Runtime.InteropServices;
 using LogLevel = NLog.LogLevel;
