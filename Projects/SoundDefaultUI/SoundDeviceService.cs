@@ -1,10 +1,7 @@
 ﻿using NLog;
 using System.Reflection;
 using System.Text;
-using System.Windows.Threading;
-using System.Xml.Linq;
 using static SoundDefaultUI.SoundAgentApi;
-using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using LogLevel = NLog.LogLevel;
 
@@ -15,7 +12,7 @@ public sealed class SoundDeviceService : IDisposable
     private static Logger Logger { get; } = LogManager.GetCurrentClassLogger();
     private ulong _serviceHandle;
     private bool _disposed;
-    private readonly object _disposeLock = new();
+    private readonly Lock _disposeLock = new();
 
     private static readonly Dictionary<string, LogLevel> SpdLogToNlog =
         new(StringComparer.OrdinalIgnoreCase)
@@ -135,6 +132,7 @@ public sealed class SoundDeviceService : IDisposable
         GC.SuppressFinalize(this);
     }
 
+    // ReSharper disable once UnusedParameter.Local
     private void Dispose(bool disposing)
     {
         ulong handleToRelease = 0;
