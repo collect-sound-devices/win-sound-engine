@@ -25,6 +25,7 @@ namespace ed::audio
 
         TEST_METHOD(DeviceCtorTest)
         {
+            // ReSharper disable once CppVariableCanBeMadeConstexpr
             const auto nameExpected = "name01"s;
             const auto pnpIdExpected = generate_uuid();
 

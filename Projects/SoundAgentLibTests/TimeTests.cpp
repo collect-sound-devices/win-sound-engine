@@ -140,6 +140,7 @@ namespace ed::audio
         constexpr static size_t OFFSET_TO_MICROSECONDS_FRACTION = TIME_STR_LENGTH - (1 + 6);
         constexpr static size_t OFFSET_TO_SECONDS_FRACTION = OFFSET_TO_MICROSECONDS_FRACTION - (1 + 2);
         constexpr static size_t OFFSET_TO_MINUTES_FRACTION = OFFSET_TO_SECONDS_FRACTION - (1 + 2);
+        // ReSharper disable once CppDeclaratorNeverUsed
         constexpr static size_t OFFSET_TO_HOURS_FRACTION = OFFSET_TO_MINUTES_FRACTION - (1 + 2);
 
         TEST_METHOD(CheckTimeUtcCreatedFromSeconds)

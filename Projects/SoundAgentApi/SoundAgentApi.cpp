@@ -9,7 +9,6 @@
 #include "VersionInformation.h"
 
 #include <algorithm>
-#include <crtdbg.h>
 #include <intsafe.h>
 
 #include "internal/SpdLogger/Logger.h"

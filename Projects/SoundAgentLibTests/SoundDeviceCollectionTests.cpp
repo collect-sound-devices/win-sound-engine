@@ -1,7 +1,5 @@
 #include "stdafx.h"
 
-#include <cstdlib>
-
 #include <queue>
 
 #include <CppUnitTest.h>
@@ -70,11 +68,13 @@ public:
         {
             SoundDeviceCollection devColl();
 
+            // ReSharper disable CommentTypo
             // char* s = new char[17];
             // strcpy_s(s, 17, "allocate_no_free");
             // char* ss = new char[14];
             // strcpy_s(ss, 14, "stackoverflow");
             // delete[] ss;
+            // ReSharper restore CommentTypo
         }
         TEST_METHOD(ResetContentMemoryLeakTest)
         {

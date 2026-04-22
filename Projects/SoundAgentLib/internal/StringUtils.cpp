@@ -1,4 +1,5 @@
-﻿#include "os-dependencies.h"
+﻿// ReSharper disable once CppUnusedIncludeDirective
+#include "os-dependencies.h"
 
 #include "StringUtils.h"
 

@@ -1,7 +1,5 @@
 #include "stdafx.h"
 
-#include "internal/TimeUtil.h"
-
 #include "OsInfo.h"
 #include "public/CoInitRaiiHelper.h"
 #include "public/SoundAgentInterface.h"
