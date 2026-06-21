@@ -11,6 +11,15 @@ Released on $date$
 ~~~
 
 ## Changes
+- Clean-up, code improvements, and latest compiler versions
+
+4.1.0
+--------
+~~~
+Released on 26.03.2026
+~~~
+
+## Changes
 - Repository renamed to win-sound-engine. Submodule removed
 
 4.0.5
