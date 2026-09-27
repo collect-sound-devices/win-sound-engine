@@ -13,8 +13,6 @@ It contains:
 
 ## Architecture
 
-<div style="zoom: 0.5;">
-
 ```mermaid
 flowchart BT
 
@@ -22,38 +20,61 @@ classDef dottedBox fill:transparent, fill-opacity:0.55, stroke-dasharray:10 8, s
 classDef stressedBox fill:#f0f0f0, fill-opacity:0.2, stroke-dasharray:10 8, stroke-width:4px;
 classDef invisibleNode fill:transparent, stroke:transparent;
 
-coreAudioApi["Core Audio<br>(Windows API)"]
+coreAudioApi["Core Audio
+(Windows API)"]
 
 subgraph scannerBackend["<b>win-sound-engine (C++ / Go module)</b>"]
-    invisible3["<br><br><br><br><br>"]
+    invisible3["
+    
+    
+    
+    
+    "]
     class invisible3 invisibleNode
-    goCgoWrapper["SoundLibWrap<br>(Go package)"]
-    soundAgentApiDll["ANSI C SoundAgentApi.dll,<br>SoundDeviceCollection<br>(C++ class)"]
-    invisible4["<br><br><br><br><br>"]
+    goCgoWrapper["SoundLibWrap
+    (Go package)"]
+    soundAgentApiDll["ANSI C SoundAgentApi.dll,
+    SoundDeviceCollection
+    (C++ class)"]
+    invisible4["
+    
+    
+    
+    
+    "]
     class invisible4 invisibleNode
 end
 class scannerBackend stressedBox
 
-coreAudioApi --->|Device and volume change<br>notifications| soundAgentApiDll
+coreAudioApi --->|Device and volume change
+notifications| soundAgentApiDll
 soundAgentApiDll ---> |Read device characteristics| coreAudioApi
 
-winSoundScannerService["<b>WinSoundScanner</b><br>(Go Windows Service)"]
+winSoundScannerService["<b>WinSoundScanner</b>
+(Go Windows Service)"]
 
-subgraph eventTopicKafkaMicroservice["<br>"]
-    eventTopic[("Event Topic<br>(Kafka topic)")]
+subgraph eventTopicKafkaMicroservice["
+"]
+    eventTopic[("Event Topic
+    (Kafka topic)")]
     class eventTopic dottedBox
-    kafkaRestForwarder["KafkaToRestApiForwarder<br>(.NET microservice)"]
+    kafkaRestForwarder["KafkaToRestApiForwarder
+    (.NET microservice)"]
     class kafkaRestForwarder dottedBox
 end
 class eventTopicKafkaMicroservice dottedBox
     
-subgraph requestQueueRabbitMqMicroservice["<br>"]
-    requestQueue[("Request Queue<br>(RabbitMQ channel)")]
-    rabbitMqRestForwarder["RmqToRestApiForwarder<br>(.NET microservice)"]
+subgraph requestQueueRabbitMqMicroservice["
+"]
+    requestQueue[("Request Queue
+    (RabbitMQ channel)")]
+    rabbitMqRestForwarder["RmqToRestApiForwarder
+    (.NET microservice)"]
 end
 class requestQueueRabbitMqMicroservice dottedBox
 
-deviceRepositoryApi["Device Repository Server<br>(REST API)"]
+deviceRepositoryApi["Device Repository Server
+(REST API)"]
 
 winSoundScannerService ---> |Access device| goCgoWrapper
 goCgoWrapper --->|Device events| winSoundScannerService
@@ -61,17 +82,16 @@ goCgoWrapper --->|Device events| winSoundScannerService
 goCgoWrapper --> |C API calls| soundAgentApiDll
 soundAgentApiDll -->|C / C++ callbacks| goCgoWrapper
 
-winSoundScannerService -..-> |Publish device events| eventTopic
-winSoundScannerService --->|Publish request messages| requestQueue
+winSoundScannerService -.-> |Publish device events| eventTopic
+winSoundScannerService -->|Publish request messages| requestQueue
 
 eventTopic -->|Fetch events| kafkaRestForwarder
 kafkaRestForwarder --> |Detect events| eventTopic
-kafkaRestForwarder -..->|POST/PUT requests| deviceRepositoryApi
+kafkaRestForwarder -.->|POST/PUT requests| deviceRepositoryApi
 requestQueue -->|Fetch messages| rabbitMqRestForwarder
 rabbitMqRestForwarder --> |Detect messages| requestQueue
-rabbitMqRestForwarder --->|POST/PUT requests| deviceRepositoryApi
+rabbitMqRestForwarder -->|POST/PUT requests| deviceRepositoryApi
 ```
-</div>
 
 ## Go Modules Generated
 
