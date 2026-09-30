@@ -20,9 +20,8 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v5
-
-      - name: Unshallow repository
-        run: git fetch --prune --unshallow
+        with:
+          fetch-depth: 0
 
       - name: Determine version (SemVer)
         id: get_version
@@ -70,10 +69,8 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v5
         with:
+          fetch-depth: 0
           submodules: true
-
-      - name: Unshallow repository
-        run: git fetch --prune --unshallow
 
       - name: Setup MSBuild
         uses: microsoft/setup-msbuild@v3
