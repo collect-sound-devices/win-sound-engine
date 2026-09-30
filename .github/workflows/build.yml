@@ -175,6 +175,12 @@ jobs:
           if gh release view "$VERS" > /dev/null 2>&1; then
             echo "Release $VERS already exists; updating assets"
           else
-            gh release create "$VERS" --target "$GITHUB_SHA" --title "WinSoundEngine $VERS" --notes "Release $VERS"
+            # rc builds (e.g. v1.2.4-rc.3) must not become "Latest"
+            if [[ "$VERS" == *-rc.* ]]; then
+              PRERELEASE_FLAG="--prerelease"
+            else
+              PRERELEASE_FLAG=""
+            fi
+            gh release create "$VERS" --target "$GITHUB_SHA" $PRERELEASE_FLAG --title "WinSoundEngine $VERS" --notes "Release $VERS"
           fi
           gh release upload "$VERS" build/*.* --clobber
