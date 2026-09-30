@@ -152,8 +152,7 @@ jobs:
           path: artifacts\
 
   publish:
-    if: github.ref != 'refs/pull/develop'
-    # if: startsWith(github.ref, 'refs/tags/v')
+    if: github.ref == 'refs/heads/main' || startsWith(github.ref, 'refs/tags/Release-')
     needs:
       - build
       - setup-and-compute-version
