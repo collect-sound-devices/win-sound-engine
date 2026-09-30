@@ -79,10 +79,7 @@ jobs:
       - name: Setup MSBuild
         uses: microsoft/setup-msbuild@v3
 
-      - name: Integrate vcpkg with MSBuild
-        run: vcpkg integrate install
-
-      - name: Ensure vcpkg and install manifest deps
+      - name: Ensure vcpkg, integrate with MSBuild and install manifest deps
         shell: pwsh
         run: |
           $vcpkgDir = 'C:\vcpkg'
@@ -92,7 +89,10 @@ jobs:
             Write-Host "Bootstrapping vcpkg..."
             & "$vcpkgDir\bootstrap-vcpkg.bat" -disableMetrics
           }
-    
+
+          Write-Host "Integrating vcpkg with MSBuild..."
+          & "$vcpkgDir\vcpkg.exe" integrate install
+
           # Install manifest dependencies from the workspace root
           Write-Host "Installing vcpkg manifest dependencies..."
           & "$vcpkgDir\vcpkg.exe" install --triplet x64-windows-static --x-install-root="$PWD\vcpkg_installed\x64-windows-static"
