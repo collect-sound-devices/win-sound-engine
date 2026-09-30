@@ -39,6 +39,10 @@ jobs:
           # Extract version number from the tag (e.g., Release-1.0.1 -> 1.0.1)
           $versionNumber = $latestTag -replace '^Release-', ''
           Write-Host "latestTag: $latestTag, versionNumber: $versionNumber"
+          if ($versionNumber -notmatch '^\d+\.\d+\.\d+$') {
+              Write-Host "::error::Tag '$latestTag' is not in the form Release-X.Y.Z"
+              exit 1
+          }
           $distance = git rev-list --count "$latestTag..HEAD"
           
           # Append -rc<distance> if distance is greater than 0
