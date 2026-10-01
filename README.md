@@ -100,7 +100,7 @@ rabbitMqRestForwarder -->|POST/PUT requests| deviceRepositoryApi
 ## Executables Generated
 
 - **SoundDefaultUI**: Lightweight WPF UI showing the live volume levels of the default audio devices, output and input device separately.
-  ![SoundDefaultUI screenshot](202509011440SoundDefaultUI.jpg)
+  ![SoundDefaultUI screenshot](202610011501SoundDefaultUI.jpg)
 - **SoundAgentCli**: Command-line test CLI.
 - **win-sound-logger.exe**: Simple Go test CLI that logs the current default audio devices and later device/volume change events to the console.
 
