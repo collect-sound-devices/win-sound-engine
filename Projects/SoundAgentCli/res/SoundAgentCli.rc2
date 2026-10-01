@@ -12,6 +12,13 @@
 #include "AssemblyInformation.h"
 #include <windows.h>
 
+#ifndef FILE_DESCRIPTION_ATTRIBUTE
+    #define FILE_DESCRIPTION_ATTRIBUTE     ASSEMBLY_DESCRIPTION_ATTRIBUTE
+#endif
+#ifndef ORIGINAL_FILENAME_ATTRIBUTE
+    #define ORIGINAL_FILENAME_ATTRIBUTE    RESOURCE_FILENAME_ATTRIBUTE
+#endif
+
 #ifndef DEBUG
     #define RESOURCE_CONFIGURATION_FLAG    0
 #else
@@ -32,12 +39,12 @@ VS_VERSION_INFO VERSIONINFO
         BLOCK "040904E4"
         BEGIN
             VALUE "CompanyName", ASSEMBLY_COMPANY_ATTRIBUTE "\0"
-            VALUE "FileDescription", ASSEMBLY_DESCRIPTION_ATTRIBUTE "\0"
+            VALUE "FileDescription", FILE_DESCRIPTION_ATTRIBUTE "\0"
             VALUE "FileVersion", ASSEMBLY_VERSION_ATTRIBUTE "\0"
             VALUE "InternalName", ASSEMBLY_TITLE_ATTRIBUTE "\0"
             VALUE "LegalCopyright", ASSEMBLY_COPYRIGHT_ATTRIBUTE "\0"
             VALUE "LegalTrademarks", ASSEMBLY_TRADEMARK_ATTRIBUTE "\0"
-            VALUE "OriginalFilename", RESOURCE_FILENAME_ATTRIBUTE "\0"
+            VALUE "OriginalFilename", ORIGINAL_FILENAME_ATTRIBUTE "\0"
             VALUE "ProductName", ASSEMBLY_PRODUCT_ATTRIBUTE "\0"
             VALUE "ProductVersion", PRODUCT_VERSION_ATTRIBUTE "\0"
         END
