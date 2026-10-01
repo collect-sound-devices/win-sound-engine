@@ -30,7 +30,7 @@ public class MainViewModel
             ? "Command line parameter(s) detected. They are currently ignored."
             : "No command line parameters detected");
 
-        WindowTitle = "System Default Sound";
+        WindowTitle = "System Audio";
 
         SoundDeviceService = soundDeviceService;
         SoundDeviceService.InitializeAndBind(OnDefaultRenderChanged, OnDefaultCaptureChanged);
