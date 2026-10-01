@@ -1,10 +1,19 @@
 using System.Runtime.InteropServices;
+using Windows.Win32;
+using Windows.Win32.Foundation;
+using Windows.Win32.System.Com.StructuredStorage;
+using Windows.Win32.System.Variant;
+using Windows.Win32.UI.Shell.PropertiesSystem;
 
 namespace SoundDefaultUI;
 
 internal static class TaskbarIdentity
 {
-    private static readonly Guid AppUserModelPropertySet = new("9F4C2855-9F79-4B39-A8D0-E1D42DE1D5F3");
+    private const string AppUserModelId = "EduardDanziger.SystemAudio";
+
+    // Must run before any window is created.
+    public static void SetProcessId() =>
+        PInvoke.SetCurrentProcessExplicitAppUserModelID(AppUserModelId).ThrowOnFailure();
 
     public static void Set(IntPtr window, string title) => Update(window, title);
 
@@ -12,15 +21,13 @@ internal static class TaskbarIdentity
 
     private static void Update(IntPtr window, string? title)
     {
-        var interfaceId = typeof(IPropertyStore).GUID;
-        SHGetPropertyStoreForWindow(window, in interfaceId, out var store);
+        PInvoke.SHGetPropertyStoreForWindow(new HWND(window), out IPropertyStore store).ThrowOnFailure();
         try
         {
             var executablePath = Environment.ProcessPath;
-            SetString(store, 2, title is null ? null : $"\"{executablePath}\"");
-            SetString(store, 3, title is null ? null : $"{executablePath},0");
-            SetString(store, 4, title);
-            SetString(store, 5, title is null ? null : "EduardDanziger.SystemAudio");
+            SetString(store, PInvoke.PKEY_AppUserModel_RelaunchCommand, title is null ? null : $"\"{executablePath}\"");
+            SetString(store, PInvoke.PKEY_AppUserModel_RelaunchIconResource, title is null ? null : $"{executablePath},0");
+            SetString(store, PInvoke.PKEY_AppUserModel_RelaunchDisplayNameResource, title);
         }
         finally
         {
@@ -28,48 +35,17 @@ internal static class TaskbarIdentity
         }
     }
 
-    private static void SetString(IPropertyStore store, uint propertyId, string? text)
+    private static unsafe void SetString(IPropertyStore store, in PROPERTYKEY key, string? text)
     {
-        var key = new PropertyKey { FormatId = AppUserModelPropertySet, PropertyId = propertyId };
-        var value = new PropVariant
+        fixed (char* chars = text)
         {
-            ValueType = (ushort)(text is null ? VarEnum.VT_EMPTY : VarEnum.VT_LPWSTR),
-            Value = text
-        };
-        store.SetValue(in key, in value);
-    }
-
-#pragma warning disable SYSLIB1054
-    [DllImport("shell32.dll", PreserveSig = false)]
-    private static extern void SHGetPropertyStoreForWindow(IntPtr window, in Guid interfaceId,
-        [MarshalAs(UnmanagedType.Interface)] out IPropertyStore store);
-#pragma warning restore SYSLIB1054
-
-    [StructLayout(LayoutKind.Sequential)]
-    private struct PropertyKey
-    {
-        public Guid FormatId;
-        public uint PropertyId;
-    }
-
-    [StructLayout(LayoutKind.Sequential)]
-    private struct PropVariant
-    {
-        public ushort ValueType;
-        public ushort Reserved1, Reserved2, Reserved3;
-        [MarshalAs(UnmanagedType.LPWStr)] public string? Value;
-        public IntPtr Reserved4;
-    }
-
-    [ComImport]
-    [Guid("886D8EEB-8CF2-4446-8D02-CDBA1DBDCF99")]
-    [InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
-    private interface IPropertyStore
-    {
-        void GetCount(out uint count);
-        void GetAt(uint index, out PropertyKey key);
-        void GetValue(in PropertyKey key, out PropVariant value);
-        void SetValue(in PropertyKey key, in PropVariant value);
-        void Commit();
+            var value = new PROPVARIANT();
+            if (text is not null)
+            {
+                value.vt = VARENUM.VT_LPWSTR;
+                value.pwszVal = new PWSTR(chars);
+            }
+            store.SetValue(in key, in value);
+        }
     }
 }

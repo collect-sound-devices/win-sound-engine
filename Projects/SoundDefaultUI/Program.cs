@@ -17,6 +17,8 @@ LogManager.Setup()
 
 LogManager.Configuration = new NLogLoggingConfiguration(config.GetSection("NLog"));
 
+TaskbarIdentity.SetProcessId();
+
 
 // Create a builder by specifying the application and main window.
 var builder = WpfApplication<App, MainWindow>.CreateBuilder(args);
