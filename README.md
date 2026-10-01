@@ -149,6 +149,19 @@ The resulting binaries:
 - `Projects\SoundAgentCli\bin\x64\Release\SoundAgentCli.exe`
 - `x64\Release\win-sound-logger.exe`
 
+## Changelog
+- 2026-10-01 SoundDefaultUI: fixed title bar, icon and taskbar naming
+- 2026-09-27 Updated NuGet packages and submodules to the latest versions; improved the README architecture diagram.
+- 2026-05-22 Replaced the Boost.Nowide UTF-16 to UTF-8 conversion with a native Windows implementation, covered by unit tests.
+- 2026-04-07 Log timestamps now include time zone information.
+- 2026-04-06 Renamed the project from SoundWinScanner to WinSoundEngine; migrated former submodule sources into the repository.
+- 2026-03-26 Added `win-sound-logger` Go CLI and SoundAgentCli to the release artifacts
+- 2026-03-11 Go module exposes extended OS name information.
+- 2026-03-10 Added API to retrieve extended Windows OS version information; CLI logging unified on spdlog.
+- 2026-02-15 Added a Go test application consuming device change notifications, including a build script.
+- 2026-02-14 Migrated to .NET 10 and updated vcpkg dependencies to the latest baseline.
+- 2026-02-06 Upgraded to the v145 C++ toolset and the Windows 2025 build image.
+
 ## License
 
 This project is licensed under the terms of the [MIT License](LICENSE).
