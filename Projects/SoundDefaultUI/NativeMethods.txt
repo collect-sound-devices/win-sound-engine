@@ -1,0 +1,6 @@
+SetCurrentProcessExplicitAppUserModelID
+SHGetPropertyStoreForWindow
+IPropertyStore
+PKEY_AppUserModel_RelaunchCommand
+PKEY_AppUserModel_RelaunchIconResource
+PKEY_AppUserModel_RelaunchDisplayNameResource

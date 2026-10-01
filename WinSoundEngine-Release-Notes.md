@@ -11,6 +11,17 @@ Released on $date$
 ~~~
 
 ## Changes
+- SoundDefaultUI: title bar, icon and taskbar naming visibility fixed
+- Version resources use generated FileDescription, OriginalFilename and copyright
+- Latest NuGet packages and submodules, README diagram improved
+
+v4.1.1
+--------
+~~~
+Released on 04.06.2026
+~~~
+
+## Changes
 - Clean-up, code improvements, and latest compiler versions
 
 4.1.0
